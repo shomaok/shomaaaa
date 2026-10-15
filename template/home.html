@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mening Yangiliklar Saytim</title>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-color: #1f2937;
+            --text-secondary: #4b5563;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Sayt sarlavhasi (Header) */
+        header {
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        /* Asosiy konteyner */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Post kartochkasi */
+        .post-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Sichqoncha borgandagi effekt */
+        .post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .post-card h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .post-card p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* Yangiliklar bo'lmagandagi holat */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Oxirgi Yangiliklar</h1>
+    </header>
+
+    <div class="container">
+        {% for post in posts %}
+            <div class="post-card">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.body }}</p>
+            </div>
+        {% empty %}
+            <div class="empty-state">
+                <p>Hozircha yangiliklar yo'q.</p>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
